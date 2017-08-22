@@ -63,25 +63,23 @@ def preRun():
     "Pre Run Information"
     support.clearScreen()
     numInserts = input("Number of Inserts: ")
-    angDriver = input("Angleton Driver (blank = none): ")
-    if angDriver == "":
-        angDriver = "none"
-    brzDriver = input("West Brazos Driver (blank = none): ")
-    if brzDriver == "":
-        brzDriver = "none"
+
     prerun = open("prerun.txt","w")
     prerun.write(numInserts)
     prerun.write(NEWLINE)
-    prerun.write(angDriver)
-    prerun.write(NEWLINE)
-    prerun.write(brzDriver)
-    prerun.write(NEWLINE)
+
     prerun.close()
     return
 
 def postRun():
     "post run information"
     support.clearScreen()
+    angDriver = input("Angleton Driver (blank = none): ")
+    if angDriver == "":
+        angDriver = "none"
+    brzDriver = input("West Brazos Driver (blank = none): ")
+    if brzDriver == "":
+        brzDriver = "none"
     front = input("Who took papers to front? ")
     rackFill = input("Who filled the rack? ")
     rack = input("Rack pulled by: ")
@@ -89,6 +87,10 @@ def postRun():
     twenty = input("Who put the 20 together? ")
     hospital = input("Who put the hospital together? ")
     postrun = open("postrun.txt","w")
+    postrun.write(angDriver)
+    postrun.write(NEWLINE)
+    postrun.write(brzDriver)
+    postrun.write(NEWLINE)
     postrun.write(front)
     postrun.write(NEWLINE)
     postrun.write(rackFill)
@@ -149,8 +151,8 @@ def reports():
     with tag('p'):
         text("Truck Completion Times")
         
-    angleton = "Angleton\Liverpool Completion: " + miscLines[2].strip() + " Driver: " + preLines[1].strip()
-    wBrazos = "Brazoria\West Columbia Completion: " + miscLines[3].strip() + " Driver: " + preLines[2].strip()
+    angleton = "Angleton\Liverpool Completion: " + miscLines[2].strip() + "Driver: " + postrun[0].strip()
+    wBrazos = "Brazoria\West Columbia Completion: " + miscLines[3].strip() + "Driver: " + postrun[1].strip()
     with tag('p'):
         text(angleton)
     
@@ -158,7 +160,6 @@ def reports():
         text(wBrazos)
     
     problems = input("Problems: ")
-    problems = "Problems: " + problems
     firstDock = "First On Dock: " + miscLines[1].strip()
     lastDock = "Last On Dock: " + miscLines[4].strip()
     with tag('p'):
@@ -171,12 +172,12 @@ def reports():
         text(problems)
     
     
-    front = "Taken up front by: " + postLines[0].strip()
+    front = "Taken up front by: " + postLines[2].strip()
     twenty = "Twenty put together by: " + postLines[5].strip()
-    hospital = "Hospital put together by: " + postLines[4].strip()
-    rackFill = "Rack outside Filled by: " + postLines[1].strip()
-    rackPull = "Rack pulled by: " + postLines[2].strip()
-    mail = "Mail completed by: " + postLines[3].strip()
+    hospital = "Hospital put together by: " + postLines[7].strip()
+    rackFill = "Rack outside Filled by: " + postLines[6].strip()
+    rackPull = "Rack pulled by: " + postLines[4].strip()
+    mail = "Mail completed by: " + postLines[5].strip()
     with tag('p'):
         text(front)
     
