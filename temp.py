@@ -151,8 +151,8 @@ def reports():
     with tag('p'):
         text("Truck Completion Times")
         
-    angleton = "Angleton\Liverpool Completion: " + miscLines[2].strip() + "Driver: " + postrun[0].strip()
-    wBrazos = "Brazoria\West Columbia Completion: " + miscLines[3].strip() + "Driver: " + postrun[1].strip()
+    angleton = "Angleton\Liverpool Completion: " + miscLines[2].strip() + "Driver: " + postLines[0].strip()
+    wBrazos = "Brazoria\West Columbia Completion: " + miscLines[3].strip() + "Driver: " + postLines[1].strip()
     with tag('p'):
         text(angleton)
     
