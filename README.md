@@ -9,4 +9,4 @@ This Application is no longer being updated as of September 16th 2017AD. Please 
 
 liscensed under GNU GPL v2 or later
 
-Please include a link to this github with any release. (https://gitbut.com/tthirtle)
+Please include a link to this github with any release. (https://github.com/tthirtle)
